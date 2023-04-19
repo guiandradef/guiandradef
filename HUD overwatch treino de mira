@@ -1,0 +1,119 @@
+variáveis
+{
+	global:
+		 bots_damage
+		 bots_speed
+		 bots_enabled
+		 host_room_exit_pos
+		 hr_1_1
+		 hr_1_2
+		 hr_1_3
+		 hr_1_4
+		 hr_1_5
+		 hr_1_6
+		 hr_1_7
+		 hr_2_1
+		 hr_2_2
+		 hr_2_3
+		 hr_2_4
+		 hr_2_5
+		 hr_2_6
+		 hr_2_7
+		 hr_3_7
+		 hr_4_1
+		 hr_4_2
+		 hr_5_1
+		 hr_5_2
+		 hr_6_1
+		 hr_6_2
+		 hr_6_3
+		 hr_7_1
+		 hr_7_2
+		 hr_7_3
+}
+
+ações
+{
+	Criar Texto no Mundo(Jogador Anfitrião, String("Saída"), Global.host_room_exit_pos, 2, Cortar nas Superfícies,
+		Visível para Posição e String, Cor(Branco), Visibilidade-padrão);
+	Criar Texto no Mundo(Jogador Anfitrião, String("{0}: {1}", String("{0} {1}", Matriz Vazia, String("Velocidade")), String("{0}%",
+		Global.bots_speed)), Global.hr_2_1 + Vetor(0, 0.100, 0), 1.300, Cortar nas Superfícies, Visível para Posição e String, Cor(
+		Branco), Visibilidade-padrão);
+	Criar Texto no Mundo(Jogador Anfitrião, String("{0}: {1}", String("{0} {1}", Matriz Vazia, String("Danificar")), String("{0}%",
+		Global.bots_damage)), Global.hr_2_2 + Vetor(0, 0.100, 0), 1.300, Cortar nas Superfícies, Visível para Posição e String, Cor(
+		Branco), Visibilidade-padrão);
+	Criar Texto no Mundo(Jogador Anfitrião, String("{0}: {1}", String("{0} {1}", String Personalizada("Bots number"), Matriz Vazia),
+		Global.Q), Global.hr_2_3 + Vetor(0, 0.100, 0), 1.300, Cortar nas Superfícies, Visível para Posição e String, Cor(Branco),
+		Visibilidade-padrão);
+	Criar Texto no Mundo(Jogador Anfitrião, String("{0}: {1}", String("{0} {1}", String Personalizada("Bots enabled"), Matriz Vazia),
+		Global.bots_enabled), Global.hr_1_2 + Vetor(0, 0.200, 0), 1.300, Cortar nas Superfícies, Visível para Posição e String, Cor(
+		Branco), Visibilidade-padrão);
+	Criar Texto no Mundo(Jogador Anfitrião, String Personalizada("Ban all bots"), Global.hr_1_3 + Vetor(0, 0.200, 0), 1.300,
+		Cortar nas Superfícies, Visível para Posição e String, Cor(Branco), Visibilidade-padrão);
+	Criar Texto no Mundo(Jogador Anfitrião, String("{0} {1}", String("{0} {1}", String Personalizada("Randomize"), Matriz Vazia),
+		Matriz Vazia), Global.hr_1_1 + Vetor(0, 0.200, 0), 1.300, Cortar nas Superfícies, Visível para Posição e String, Cor(Branco),
+		Visibilidade-padrão);
+	Criar Texto no Mundo(Jogador Anfitrião, String("{0} = {1}", String("Agachar"), String("{0} {1}", String("Selecionar"),
+		Matriz Vazia)), Global.hr_1_1 + Vetor(0, 2.500, 0), 1.300, Cortar nas Superfícies, Visível para Posição e String, Cor(Branco),
+		Visibilidade-padrão);
+	Criar Texto no Mundo(Jogador Anfitrião, String Personalizada("Smartbots", String("{0} {1}", String Personalizada("Smartbots"),
+		String("Moderado"))), Global.hr_1_1 + Vetor(0, 3, 0), 2.500, Cortar nas Superfícies, Visível para Posição e String, Cor(
+		Branco), Visibilidade-padrão);
+	Criar Texto no Mundo(Jogador Anfitrião, String("{0} {1}", String de Ícone de Herói(Herói(Echo)), Matriz Vazia),
+		Global.hr_1_4 + Vetor(0, 0.200, 0), 1.300, Cortar nas Superfícies, Visível para Posição e String, Cor(Branco),
+		Visibilidade-padrão);
+	Criar Texto no Mundo(Jogador Anfitrião, String("{0} {1}", String de Ícone de Herói(Herói(Lúcio)), Matriz Vazia),
+		Global.hr_1_5 + Vetor(0, 0.200, 0), 1.300, Cortar nas Superfícies, Visível para Posição e String, Cor(Branco),
+		Visibilidade-padrão);
+	Criar Texto no Mundo(Jogador Anfitrião, String("{0} {1}", String de Ícone de Herói(Herói(Pharah)), Matriz Vazia),
+		Global.hr_1_6 + Vetor(0, 0.200, 0), 1.300, Cortar nas Superfícies, Visível para Posição e String, Cor(Branco),
+		Visibilidade-padrão);
+	Criar Texto no Mundo(Jogador Anfitrião, String("{0} {1}", String de Ícone de Herói(Herói(Tracer)), Matriz Vazia),
+		Global.hr_2_4 + Vetor(0, 0.100, 0), 1.300, Cortar nas Superfícies, Visível para Posição e String, Cor(Branco),
+		Visibilidade-padrão);
+	Criar Texto no Mundo(Jogador Anfitrião, String("{0} {1}", String de Ícone de Herói(Herói(Genji)), Matriz Vazia),
+		Global.hr_2_5 + Vetor(0, 0.100, 0), 1.300, Cortar nas Superfícies, Visível para Posição e String, Cor(Branco),
+		Visibilidade-padrão);
+	Criar Texto no Mundo(Jogador Anfitrião, String("{0} m", 20), Global.hr_7_1 + Vetor(0, 0.200, 0), 1.300, Cortar nas Superfícies,
+		Visível para Posição e String, Cor(Branco), Visibilidade-padrão);
+	Criar Texto no Mundo(Jogador Anfitrião, String("{0} m", 5), Global.hr_6_1 + Vetor(0, 0.200, 0), 1.300, Cortar nas Superfícies,
+		Visível para Posição e String, Cor(Branco), Visibilidade-padrão);
+	Criar Texto no Mundo(Jogador Anfitrião, String("{0} s", 60), Global.hr_5_1 + Vetor(0, 0.200, 0), 1.300, Cortar nas Superfícies,
+		Visível para Posição e String, Cor(Branco), Visibilidade-padrão);
+	Criar Texto no Mundo(Jogador Anfitrião, String("{0} s", 10), Global.hr_4_1 + Vetor(0, 0.200, 0), 1.300, Cortar nas Superfícies,
+		Visível para Posição e String, Cor(Branco), Visibilidade-padrão);
+	Criar Texto no Mundo(Jogador Anfitrião, String("{0} {1}", String("Concluir"), String("Tempo")), Global.hr_4_1 + Vetor(0, 3, 0),
+		2.500, Cortar nas Superfícies, Visível para Posição e String, Cor(Verde-limão), Visibilidade-padrão);
+	Criar Texto no Mundo(Jogador Anfitrião, String("{0} = {1}", String("Agachar"), String("{0} {1}", String("Selecionar"),
+		Matriz Vazia)), Global.hr_4_1 + Vetor(0, 2.500, 0), 1.300, Cortar nas Superfícies, Visível para Posição e String, Cor(Branco),
+		Visibilidade-padrão);
+	Criar Texto no Mundo(Jogador Anfitrião, String de Ícone de Herói(Herói(Genji)), Global.hr_5_2 + Vetor(0, 0.100, 0), 1.300,
+		Cortar nas Superfícies, Visível para Posição e String, Cor(Laranja), Visibilidade-padrão);
+	Criar Texto no Mundo(Jogador Anfitrião, String de Ícone de Herói(Herói(Tracer)), Global.hr_6_2 + Vetor(0, 0.100, 0), 1.300,
+		Cortar nas Superfícies, Visível para Posição e String, Cor(Laranja), Visibilidade-padrão);
+	Criar Texto no Mundo(Jogador Anfitrião, String de Ícone de Herói(Herói(Doomfist)), Global.hr_7_2 + Vetor(0, 0.100, 0), 1.300,
+		Cortar nas Superfícies, Visível para Posição e String, Cor(Laranja), Visibilidade-padrão);
+	Criar Texto no Mundo(Jogador Anfitrião, String("{0} {1}", String("Herói"), String("Banir")), Global.hr_7_2 + Vetor(0, 3, 0), 2.500,
+		Cortar nas Superfícies, Visível para Posição e String, Cor(Laranja), Visibilidade-padrão);
+	Criar Texto no Mundo(Jogador Anfitrião, String("{0} = {1}", String("Agachar"), String("{0} / {1}", String("Banir"), String(
+		"Desbloquear"))), Global.hr_7_2 + Vetor(0, 2.500, 0), 1.300, Cortar nas Superfícies, Visível para Posição e String, Cor(
+		Branco), Visibilidade-padrão);
+	Criar Texto no Mundo(Jogador Anfitrião, String("{0} {1}", String de Ícone de Herói(Herói(Ana)), Matriz Vazia),
+		Global.hr_1_7 + Vetor(0, 0.100, 0), 1.300, Cortar nas Superfícies, Visível para Posição e String, Cor(Branco),
+		Visibilidade-padrão);
+	Criar Texto no Mundo(Jogador Anfitrião, String("{0} {1}", String de Ícone de Herói(Herói(Mercy)), Matriz Vazia),
+		Global.hr_2_6 + Vetor(0, 0.100, 0), 1.300, Cortar nas Superfícies, Visível para Posição e String, Cor(Branco),
+		Visibilidade-padrão);
+	Criar Texto no Mundo(Jogador Anfitrião, String("{0} {1}", String de Ícone de Herói(Herói(Baptiste)), Matriz Vazia),
+		Global.hr_2_7 + Vetor(0, 0.100, 0), 1.300, Cortar nas Superfícies, Visível para Posição e String, Cor(Branco),
+		Visibilidade-padrão);
+	Criar Texto no Mundo(Jogador Anfitrião, String("{0} {1}", String de Ícone de Herói(Herói(Cassidy)), Matriz Vazia),
+		Global.hr_3_7 + Vetor(0, 0.100, 0), 1.300, Cortar nas Superfícies, Visível para Posição e String, Cor(Branco),
+		Visibilidade-padrão);
+	Criar Texto no Mundo(Jogador Anfitrião, String de Ícone de Herói(Herói(Roadhog)), Global.hr_4_2 + Vetor(0, 0.100, 0), 1.300,
+		Cortar nas Superfícies, Visível para Posição e String, Cor(Laranja), Visibilidade-padrão);
+	Criar Texto no Mundo(Jogador Anfitrião, String de Ícone de Herói(Herói(Sigma)), Global.hr_7_3 + Vetor(0, 0.100, 0), 1.300,
+		Cortar nas Superfícies, Visível para Posição e String, Cor(Laranja), Visibilidade-padrão);
+	Criar Texto no Mundo(Jogador Anfitrião, String de Ícone de Herói(Herói(Zarya)), Global.hr_6_3 + Vetor(0, 0.100, 0), 1.300,
+		Cortar nas Superfícies, Visível para Posição e String, Cor(Laranja), Visibilidade-padrão);
+}
