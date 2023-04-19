@@ -1,0 +1,92 @@
+ações
+{
+	Criar Texto de HUD(Todos os Jogadores(Todas as Equipes), Nulo, String Personalizada(" "), Nulo, Esquerda, 1, Cor(Laranja), Cor(
+		Laranja), Cor(Laranja), Visível para e String, Visibilidade-padrão);
+	Criar Texto de HUD(Todos os Jogadores(Todas as Equipes), Nulo, String Personalizada(" "), Nulo, Esquerda, 29, Cor(Laranja), Cor(
+		Laranja), Cor(Laranja), Visível para e String, Visibilidade-padrão);
+}
+variáveis
+{
+	global:
+		3: bots_damage
+		5: bots
+		18: bots_speed
+		27: change_time_minutes
+		29: bots_enabled
+		31: bots_num
+		35: player_win_score
+}
+
+ações BOT ingame
+{
+	Global.change_time_minutes = 60;
+	Global.player_win_score = 600;
+	"//========== BOTS ==========//"
+	Global.bots_enabled = True;
+	"bots_num min: 2, max: 12"
+	Global.bots_num = 12;
+	Global.bots_damage = 35;
+	Global.bots_speed = 100;
+	Global.bots = Matriz Vazia;
+	"disable any bots here"
+	Modificar Variável Global(bots, Juntar à Matriz, Herói(Echo));
+	Modificar Variável Global(bots, Juntar à Matriz, Herói(Genji));
+	Modificar Variável Global(bots, Juntar à Matriz, Herói(Pharah));
+	Modificar Variável Global(bots, Juntar à Matriz, Herói(Lúcio));
+	Modificar Variável Global(bots, Juntar à Matriz, Herói(Tracer));
+	Modificar Variável Global(bots, Juntar à Matriz, Herói(Ana));
+	Modificar Variável Global(bots, Juntar à Matriz, Herói(Mercy));
+	Modificar Variável Global(bots, Juntar à Matriz, Herói(Baptiste));
+	Modificar Variável Global(bots, Juntar à Matriz, Herói(Cassidy));
+}
+
+variáveis
+{
+	global:
+		26: hs_mode
+		28: show_HUD_top3combos
+		70: show_HUD_12player
+		71: show_DMG_numbers
+		72: sleep_mode_if_12sec_inactivity
+		73: COMBO_announcer
+		77: show_effects_after_kill
+		80: show_change_hero_button_tip
+		84: show_host_room_button_tip
+		85: ultimate_every_100_kills
+		95: fast_respawn
+		96: trampoline_orange
+		97: trampoline_blue
+		98: second_floor
+		99: show_hero_select
+		100: show_host_room
+}
+
+mapa
+{
+	"Second floor only in Chamber map"
+	Global.second_floor = False;
+	"if HS mode true, set bots damage to 5"
+	Global.hs_mode = False;
+	"Fast respawn(but cooldown & ammo wont reset after death)"
+	Global.fast_respawn = False;
+	Global.sleep_mode_if_12sec_inactivity = True;
+	Global.show_HUD_12player = True;
+	Global.show_DMG_numbers = True;
+	Global.COMBO_announcer = True;
+	desabilitado Global.show_HUD_top3combos = True;
+	Global.trampoline_orange = True;
+	Global.trampoline_blue = True;
+	Global.show_effects_after_kill = True;
+	Global.show_hero_select = False;
+	Global.show_host_room = False;
+	Global.show_change_hero_button_tip = True;
+	Global.show_host_room_button_tip = True;
+	Global.ultimate_every_100_kills = True;
+}
+
+ações
+{
+	Desativar gravação do Inspetor;
+	Desativar Conclusão Integrada ao Modo de Jogo;
+	Definir Tempo da Partida(5);
+}
