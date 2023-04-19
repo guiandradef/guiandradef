@@ -1,0 +1,11 @@
+ações
+{
+	Global.I = Matriz Vazia;
+	Modificar Variável Global(I, Juntar à Matriz, Heróis Permitidos(Jogador do Evento));
+	"Dont delete Brigitte"
+	Modificar Variável Global(I, Remover da Matriz por Valor, Herói(Brigitte));
+	Modificar Variável Global(I, Remover da Matriz por Valor, Herói(Moira));
+	Modificar Variável Global(I, Remover da Matriz por Valor, Herói(Reinhardt));
+	Modificar Variável Global(I, Remover da Matriz por Valor, Herói(Winston));
+	desabilitado Modificar Variável Global(I, Remover da Matriz por Valor, Herói(D.Va));
+}
