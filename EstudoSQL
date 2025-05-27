@@ -1,0 +1,114 @@
+create database ClinicaVet
+default character set utf8
+default collate utf8_general_ci;
+
+use ClinicaVet;
+
+
+CREATE TABLE Cliente (
+  CPF VARCHAR(11) PRIMARY KEY,
+  Nome VARCHAR(50),
+  Endereco VARCHAR(255),
+  Telefone VARCHAR(20)
+);
+
+CREATE TABLE Animal (
+  ID INT PRIMARY KEY AUTO_INCREMENT,
+  Nome VARCHAR(50),
+  Especie VARCHAR(50),
+  Raca VARCHAR(50),
+  Data_Nascimento DATE,
+  Cliente_CPF VARCHAR(11),
+  FOREIGN KEY (Cliente_CPF) REFERENCES Cliente(CPF)
+);
+
+CREATE TABLE Funcionario (
+  ID INT PRIMARY KEY AUTO_INCREMENT,
+  Nome VARCHAR(50),
+  Cargo VARCHAR(50),
+  Salario DECIMAL(10,2)
+);
+
+CREATE TABLE Medico (
+  CRMV VARCHAR(20) PRIMARY KEY,
+  Nome VARCHAR(50),
+  Especialidade VARCHAR(50),
+  Funcionario_ID INT,
+  FOREIGN KEY (Funcionario_ID) REFERENCES Funcionario(ID)
+);
+
+CREATE TABLE Consulta (
+  ID INT PRIMARY KEY AUTO_INCREMENT,
+  Data_Hora DATETIME,
+  Animal_ID INT,
+  Medico_CRMV VARCHAR(20),
+  Diagnostico TEXT,
+  FOREIGN KEY (Animal_ID) REFERENCES Animal(ID),
+  FOREIGN KEY (Medico_CRMV) REFERENCES Medico(CRMV)
+);
+
+CREATE TABLE Cirurgia (
+  ID INT PRIMARY KEY AUTO_INCREMENT,
+  Data_Hora DATETIME,
+  Animal_ID INT,
+  Medico_CRMV VARCHAR(20),
+  Procedimento TEXT,
+  FOREIGN KEY (Animal_ID) REFERENCES Animal(ID),
+  FOREIGN KEY (Medico_CRMV) REFERENCES Medico(CRMV)
+);
+
+
+INSERT INTO Cliente (CPF, Nome, Endereco, Telefone) VALUES
+('12345678900', 'João da Silva', 'Rua A, 123', '999999999'),
+('98765432100', 'Maria Souza', 'Rua B, 456', '888888888');
+
+INSERT INTO Animal (Nome, Especie, Raca, Data_Nascimento, Cliente_CPF) VALUES
+('Rex', 'Cachorro', 'Pastor Alemão', '2020-01-01', '12345678900'),
+('Miau', 'Gato', 'Siamese', '2021-05-10', '98765432100');
+
+INSERT INTO Funcionario (Nome, Cargo, Salario) VALUES
+('José Almeida', 'Veterinário', 5000.00),
+('Ana Paula', 'Atendente', 2000.00);
+
+INSERT INTO Medico (CRMV, Nome, Especialidade, Funcionario_ID) VALUES
+('12345', 'José Almeida', 'Clínica Geral', 1);
+
+INSERT INTO Consulta (Data_Hora, Animal_ID, Medico_CRMV, Diagnostico) VALUES
+('2023-10-26 10:00:00', 1, '12345', 'Check-up');
+
+INSERT INTO Cirurgia (Data_Hora, Animal_ID, Medico_CRMV, Procedimento) VALUES
+('2023-10-27 14:00:00', 1, '12345', 'Castração');
+
+
+-- Animais de um determinado cliente
+SELECT Nome FROM Animal WHERE Cliente_CPF = '12345678900';
+
+-- Listar todas as consultas de um determinado médico
+SELECT * FROM Consulta WHERE Medico_CRMV = '12345';
+
+-- Listar todos os animais de uma determinada espécie:
+SELECT * FROM Animal WHERE Especie = 'Gato';
+
+-- Listar os 5 clientes que mais levaram animais para consulta:
+SELECT Cliente.Nome, COUNT(Animal.ID) AS TotalConsultas
+FROM Cliente
+INNER JOIN Animal ON Cliente.CPF = Animal.Cliente_CPF
+INNER JOIN Consulta ON Animal.ID = Consulta.Animal_ID
+GROUP BY Cliente.Nome
+ORDER BY TotalConsultas DESC
+LIMIT 5;
+
+-- Listar os médicos que realizaram mais cirurgias em um determinado período:
+SELECT Medico.Nome, COUNT(Cirurgia.ID) AS TotalCirurgias
+FROM Medico
+INNER JOIN Cirurgia ON Medico.CRMV = Cirurgia.Medico_CRMV
+WHERE Cirurgia.Data_Hora BETWEEN '2023-01-01' AND '2023-12-31'
+GROUP BY Medico.Nome
+ORDER BY TotalCirurgias DESC;
+
+-- Listar os animais que foram consultados e operados no mesmo dia:
+SELECT Animal.Nome
+FROM Animal
+INNER JOIN Consulta ON Animal.ID = Consulta.Animal_ID
+INNER JOIN Cirurgia ON Animal.ID = Cirurgia.Animal_ID
+WHERE DATE(Consulta.Data_Hora) = DATE(Cirurgia.Data_Hora);
