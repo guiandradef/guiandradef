@@ -1,5 +1,5 @@
 - 👋 Hi, I’m @guiandradef
-- 👀 I’m interested in JAVA, Python e C#
+- 👀 I’m interested in JAVA, Python, SQL & C#.
 - 🌱 I’m currently learning Java full stack
 - 💞️ I’m looking to collaborate on anywere
 - 📫 How to reach me guidade595@gmail.com
