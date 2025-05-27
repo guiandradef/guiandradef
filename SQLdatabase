@@ -1,0 +1,182 @@
+create database avaliacao_f_s_a_TESTE
+default character set utf8
+default collate utf8_general_ci;
+
+use avaliacao_f_s_a_TESTE;
+
+create table usuario (
+username varchar(50) primary key not null,
+tel_cel varchar(20) not null,
+login varchar(50) not null,
+email varchar(50) not null,
+senha varchar(50) not null,
+avalia decimal(2,1) check (avalia >= 0 and avalia <=10),
+premium enum('SIM', 'NÃO')) default charset = utf8;
+
+create table funcionario (
+ID int primary key auto_increment not null,
+senha varchar(50) not null,
+login varchar(50) not null,
+email varchar(50) not null,
+tel_cel varchar(50) not null,
+cargo enum('moderador', 'administrador')
+) default charset = utf8;
+
+create table conteudo (
+    ID int primary key auto_increment not null,
+    titulo varchar(50) not null,
+    genero varchar(50) not null,
+    ano int not null,
+    avaliacao decimal(2,1) check (avaliacao >= 0 and avaliacao <=10),
+    nota_media decimal(2,1) check (nota_media >= 0 and nota_media <=10),
+    tipo enum('filme', 'animacao', 'serie') not null
+) default charset = utf8;
+
+create table avalia_usuario_filme (
+    fk_usuario_username varchar(50),
+    fk_conteudo_ID int,
+    foreign key (fk_usuario_username) references usuario (username),
+    foreign key (fk_conteudo_ID) references conteudo (ID)
+);
+
+create table avalia_usuario_serie (
+    fk_usuario_username varchar(50),
+    fk_conteudo_ID int,
+    foreign key (fk_usuario_username) references usuario (username),
+    foreign key (fk_conteudo_ID) references conteudo (ID)
+);
+
+create table avalia_usuario_animacao (
+    fk_usuario_username varchar(50),
+    fk_conteudo_ID int,
+    foreign key (fk_usuario_username) references usuario (username),
+    foreign key (fk_conteudo_ID) references conteudo (ID)
+);
+
+insert into usuario (username, login, email, tel_cel, senha, avalia, premium) values 
+('@takamassaNomuro', 'joaopedro123', 'joao@gmail.com', '(81)9.9911-1312', '123abc123', '9.9', 'NÃO'),
+('@jose_m', 'josemarcos111', 'jose@gmail.com', '(81)9.5525-2229', 'abcd456', '9.3', 'SIM'),
+('@enzoroblox', 'enzosilva_55', 'enzoj@gmail.com', '(81)9.9911-7777', 'cadeira123', '4.5', 'SIM'),
+('@mariasilva', 'mariaS123', 'mariaSilva@gmail.com', '(81)9.3333-3333', '1234567', '6.8', 'NÃO'),
+('@davilins34', 'davilins', 'davizinho@outlook.com', '(81)9.2222-2222', 'bolinho123', '2.0', 'SIM'),
+('@evandrovasconcelos', 'evandroacessoria', 'evandro_123@hotmail.com', '(8)9.5555-5555', 'acessoria1950', '5.6', 'NÃO');
+
+insert into funcionario (ID, login, email, tel_cel, senha, cargo) values
+(default, '@adm1', 'adm1@gmail.com','(81)9.9922-3344', 'adm1-12345', 'administrador'),
+(default, '@adm2', 'adm2@gmail.com', '(11)9.4567-8888', 'adm2-6789', 'administrador'),
+(default, '@adm3', 'adm3@gmail.com', '(22)9.1122-3344', 'adm3-7788', 'administrador'),
+(default, '@mod1', 'mod1@hotmail.com', '(33)9.1122-3344', 'mod1-3344', 'moderador'),
+(default, '@mod2', 'mod2@hotmail.com', '(22)9.6666-7777', 'mod2-3456', 'moderador'),
+(default, '@mod3', 'mod3@outlook.com', '(44)9.1232-4544', 'mod3-8753', 'moderador');
+
+insert into conteudo (ID, titulo, genero, ano, avaliacao, nota_media, tipo) values
+(default, 'O poderoso chefão', 'crime/ficção policial', '1972', '9.7', '9.9', 'filme'),
+(default, 'Jogos Vorazes', 'Açao/ Aventura', '2012', '5.2', '8.5', 'filme'),
+(default, 'Batman: O Cavaleiro das Trevas', 'Ação/Crime', '2008', '8.3', '9.2', 'filme'),
+(default, 'O Iluminado', 'Terror/ Mistério', '1980', '6.8', '7.4', 'filme'),
+(default, 'Clube dos Cinco', 'Comédia/ Drama', '1985', '4.8', '7.9', 'filme'),
+(default, 'Up: Altas aventuras', 'Aventura', '2009', '9.7', '8.4', 'animacao'),
+(default, 'Vida de Inseto', 'Aventura', '1994', '8.0', '7.8', 'animacao'),
+(default, 'Hunter x Hunter', 'Açao/ Aventura', '2011', '9.5', '8.9', 'animacao'),
+(default, 'A Viagem de Chihiro', 'Fantasia', '2001', '7.5', '8.0', 'animacao'),
+(default, 'Shrek', 'Comédia/ Fantasia', '2001', '6.0', '9.0', 'animacao'),
+(default, 'Succession', 'Drama', '2018', '4.4', '7.8', 'serie'),
+(default, 'Game of Thrones', 'Drama/ Fantasia', '2011', '6.8', '7.1', 'serie'),
+(default, 'MoonKnight', 'Aventura', '2022', '3.6', '5.5', 'serie'),
+(default, 'Dark', 'Thriller', '2017', '5.9', '7.5', 'serie'),
+(default, 'Breaking Bad', 'crime/ Drama', '2008', '9.8', '9.0', 'serie');
+
+
+insert into avalia_usuario_filme (fk_usuario_username, fk_conteudo_ID) values
+('@jose_m', '1'), 
+('@enzoroblox', '2'); 
+
+
+insert into avalia_usuario_serie (fk_usuario_username, fk_conteudo_ID) values
+('@jose_m', '4'), 
+('@takamassaNomuro', '4'); 
+
+
+insert into avalia_usuario_animacao (fk_usuario_username, fk_conteudo_ID) values
+('@enzoroblox', '3'),
+('@jose_m', '3'); 
+
+
+alter table avalia_usuario_filme
+add column nota_usuario decimal(2,1) check (nota_usuario >= 0 and nota_usuario <= 10);
+
+
+alter table avalia_usuario_serie
+add column nota_usuario decimal(2,1) check (nota_usuario >= 0 and nota_usuario <= 10);
+
+
+alter table avalia_usuario_animacao
+add column nota_usuario decimal(2,1) check (nota_usuario >= 0 and nota_usuario <= 10);
+
+
+insert into avalia_usuario_filme (fk_usuario_username, fk_conteudo_ID, nota_usuario) values
+('@jose_m', '1', '9.5'), -- @jose_m avaliou o filme 'O poderoso chefão' com nota 9.5
+('@enzoroblox', '2', '7.0'); -- @enzoroblox avaliou o filme 'Jogos Vorazes' com nota 7.0
+
+
+insert into avalia_usuario_serie (fk_usuario_username, fk_conteudo_ID, nota_usuario) values
+('@jose_m', '4', '8.0'), -- @jose_m avaliou a série 'Succession' com nota 8.0
+('@takamassaNomuro', '4', '6.5'); -- @takamassaNomuro avaliou a série 'Succession' com nota 6.5
+
+
+insert into avalia_usuario_animacao (fk_usuario_username, fk_conteudo_ID, nota_usuario) values
+('@enzoroblox', '3', '9.0'), -- @enzoroblox avaliou a animação 'Hunter x Hunter' com nota 9.0
+('@jose_m', '3', '9.9'); -- @jose_m avaliou a animação 'Hunter x Hunter' com nota 9.9
+
+AGORA SEGUE ABAIXO O SCRIPT PARA FAZER ALGUMAS PESQUISAS NO DATABASE:
+
+-- PESQUISAS
+
+-- Mostrar todos os Usuários comuns existentes e seus dados
+select * from usuario;
+
+-- Usuários que avaliaram com a nota acima de 9.0
+select username, avalia from usuario where avalia > 9.0;
+
+-- Mostrar usuários com o Premium ativo
+select username from usuario where premium = 'SIM';
+
+--  Selecionar o nome de usuário e a nota do usuário para o filme "O poderoso chefão"
+select u.username, auf.nota_usuario from usuario u
+join avalia_usuario_filme auf on u.username = auf.fk_usuario_username
+join conteudo c on auf.fk_conteudo_ID = c.ID
+where c.titulo = 'O poderoso chefão';
+
+--  Selecionar a quantidade de filmes por gênero
+select genero, count(*) as numero_de_filmes from conteudo
+where tipo = 'filme'
+group by genero;
+
+-- Selecionar os 3 filmes com as maiores notas médias
+select titulo, nota_media
+from conteudo
+where tipo = 'filme'
+order by nota_media desc limit 3;
+
+-- Média das notas dos filmes
+select avg(nota_usuario) as media_notas_filmes
+from avalia_usuario_filme;
+
+-- Média de notas das animaçoes separado por genero
+select genero, avg(nota_media) as media_notas_por_genero
+from conteudo
+where tipo = 'animacao'
+group by genero;
+
+-- Média das notas do filme O poderoso chefão
+SELECT AVG(nota_usuario) AS media_notas_chefao
+FROM avalia_usuario_filme auf
+JOIN conteudo c ON auf.fk_conteudo_ID = c.ID
+WHERE c.titulo = 'O poderoso chefão';
+
+-- 3 séries com as maiores médias
+SELECT titulo, nota_media
+FROM conteudo
+WHERE tipo = 'serie'
+ORDER BY nota_media DESC
+LIMIT 3;
